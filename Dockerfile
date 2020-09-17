@@ -16,13 +16,13 @@ ARG BOMBSQUAD_VERSION="1.5.26"
 RUN apt-get update
 
 # Install Packages
-RUN apt-get install -y curl python3 libpython3.8
+RUN apt-get install -y wget python3 libpython3.8
 
 # Set Working Directory
 WORKDIR /app
 
 # Download BombSquad Server
-RUN curl -o bombsquad.tar.gz https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_${BOMBSQUAD_VERSION}.tar.gz && \
+RUN wget -O bombsquad.tar.gz https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_${BOMBSQUAD_VERSION}.tar.gz && \
     tar -xvf bombsquad.tar.gz && \
     mv BombSquad_Server*/ bombsquad-server && \
     rm -f bombsquad.tar.gz
