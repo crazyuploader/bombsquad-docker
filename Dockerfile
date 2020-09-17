@@ -25,7 +25,10 @@ WORKDIR /app
 RUN wget -O bombsquad.tar.gz https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_${BOMBSQUAD_VERSION}.tar.gz && \
     tar -xvf bombsquad.tar.gz && \
     mv BombSquad_Server*/ bombsquad-server && \
-    rm -f bombsquad.tar.gz
+    rm -f bombsquad.tar.gz && \
+    sed -i 's/#party_name: FFA/party_name: Junglee Server/' /app/bombsquad-server/bombsquad_server/config.yaml && \
+    sed -i 's/#party_is_public: true/party_is_public: false/' /app/bombsquad-server/bombsquad_server/config.yaml && \
+    sed -i 's/#max_party_size: 6/max_party_size: 21/' /app/bombsquad-server/bombsquad_server/config.yaml
 
 # Clean up
 RUN apt-get clean && \

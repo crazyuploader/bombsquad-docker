@@ -11,7 +11,6 @@ Docker image for server of game [BombSquad Game](https://www.froemling.net/apps/
 docker run -d -it \
            -p 43210:43210/udp \
            --name bombsquad \
-           -v $(pwd)/config.yaml:/app/bombsquad-server/config.yaml \
            crazyuploader/bombsquad
 ```
 
