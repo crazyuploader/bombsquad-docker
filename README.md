@@ -16,3 +16,6 @@ docker run -d -it \
 
 ### DockerHub
 https://hub.docker.com/r/crazyuploader/bombsquad
+
+### Official Builds
+https://files.ballistica.net/bombsquad/builds/
