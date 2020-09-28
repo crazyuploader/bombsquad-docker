@@ -8,6 +8,7 @@
 Docker image for server of game [BombSquad Game](https://www.froemling.net/apps/bombsquad)
 
 ### Usage
+
 ```bash
 docker run -d -it \
            -p 43210:43210/udp \
@@ -16,7 +17,9 @@ docker run -d -it \
 ```
 
 ### DockerHub
+
 https://hub.docker.com/r/crazyuploader/bombsquad
 
 ### Official Builds
+
 https://files.ballistica.net/bombsquad/builds/
