@@ -16,6 +16,16 @@ docker run -d -it \
            crazyuploader/bombsquad
 ```
 
+_Custom `config.yaml` config file:_
+
+```bash
+docker run -d -it \
+           -p 43210:43210/udp \
+           --name bombsquad \
+           -v `pwd`/config.yaml:/app/bombsquad-server/config.yaml \
+           crazyuploader/bombsquad
+```
+
 ### DockerHub
 
 https://hub.docker.com/r/crazyuploader/bombsquad
