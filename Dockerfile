@@ -10,7 +10,7 @@ FROM ubuntu:focal
 ARG DEBIAN_FRONTEND="noninteractive"
 
 # BombSquad Version to download
-ARG BOMBSQUAD_VERSION="1.5.29"
+ARG BOMBSQUAD_VERSION="1.6.0"
 
 # Update Packages list
 RUN apt-get update
