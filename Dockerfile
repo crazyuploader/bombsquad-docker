@@ -10,7 +10,7 @@ FROM ubuntu:focal
 ARG DEBIAN_FRONTEND="noninteractive"
 
 # BombSquad Version to download
-ARG BOMBSQUAD_VERSION="1.6.0"
+ARG BOMBSQUAD_VERSION="1.6.4"
 
 # Update Packages list
 RUN apt-get update
@@ -22,7 +22,7 @@ RUN apt-get install -y wget nano python3 libpython3.8
 WORKDIR /app
 
 # Download BombSquad Server
-RUN wget -O bombsquad.tar.gz https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_${BOMBSQUAD_VERSION}.tar.gz && \
+RUN wget -O bombsquad.tar.gz https://files.ballistica.net/bombsquad/builds/old/BombSquad_Server_Linux_${BOMBSQUAD_VERSION}.tar.gz && \
     tar -xvf bombsquad.tar.gz && \
     mv BombSquad_Server*/ bombsquad-server && \
     rm -f bombsquad.tar.gz && \
