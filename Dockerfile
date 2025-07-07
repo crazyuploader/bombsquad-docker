@@ -3,36 +3,33 @@
 #
 # BombSquad Server
 #
-# Base Image: Ubuntu Focal
-FROM ubuntu:focal
-
-# Setting Non-Interactive Environment Variable
-ARG DEBIAN_FRONTEND="noninteractive"
+# Base Image: fedora:latest
+FROM fedora:latest
 
 # BombSquad Version to download
-ARG BOMBSQUAD_VERSION="1.6.4"
+ARG BOMBSQUAD_VERSION="1.7.43"
 
 # Update Packages list
-RUN apt-get update
+RUN dnf update -y
 
 # Install Packages
-RUN apt-get install -y wget nano python3 libpython3.8
+RUN dnf install -y python3
 
 # Set Working Directory
 WORKDIR /app
 
 # Download BombSquad Server
-RUN wget -O bombsquad.tar.gz https://files.ballistica.net/bombsquad/builds/old/BombSquad_Server_Linux_${BOMBSQUAD_VERSION}.tar.gz && \
+RUN curl -Lo bombsquad.tar.gz https://files.ballistica.net/bombsquad/builds/old/BombSquad_Server_Linux_x86_64_${BOMBSQUAD_VERSION}.tar.gz && \
     tar -xvf bombsquad.tar.gz && \
     mv BombSquad_Server*/ bombsquad-server && \
     rm -f bombsquad.tar.gz && \
-    sed -i 's/#party_name: FFA/party_name: Junglee Server/' /app/bombsquad-server/config.yaml && \
-    sed -i 's/#party_is_public: true/party_is_public: true/' /app/bombsquad-server/config.yaml && \
-    sed -i 's/#max_party_size: 6/max_party_size: 21/' /app/bombsquad-server/config.yaml
+    sed -i 's/#party_name = "FFA"/party_name = "Junglee Server"/' /app/bombsquad-server/config.toml && \
+    sed -i 's/#party_is_public = true/party_is_public = true/' /app/bombsquad-server/config.toml && \
+    sed -i 's/#max_party_size = 6/max_party_size = 21/' /app/bombsquad-server/config.toml
 
 # Clean up
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/*
+RUN dnf clean all && \
+    rm -rf /var/lib/dnf/yum/* /tmp/*
 
 WORKDIR /app/bombsquad-server
 

@@ -10,20 +10,24 @@ Docker image for server of game [BombSquad Game](https://www.froemling.net/apps/
 
 ### Usage
 
-```bash
+```code
 docker run -d -it \
            -p 43210:43210/udp \
            --name bombsquad \
+           -v /etc/machine-id:/etc/machine-id:ro \
+           --restart unless-stopped \
            crazyuploader/bombsquad
 ```
 
-_Custom `config.yaml` config file:_
+_Custom `config.toml` config file:_
 
-```bash
+```code
 docker run -d -it \
            -p 43210:43210/udp \
            --name bombsquad \
-           -v `pwd`/config.yaml:/app/bombsquad-server/config.yaml \
+           -v /etc/machine-id:/etc/machine-id:ro \
+           -v "${PWD}"/config.toml:/app/bombsquad-server/config.yaml \
+           --restart unless-stopped \
            crazyuploader/bombsquad
 ```
 

@@ -1,0 +1,13 @@
+services:
+  bombsquad:
+    ports:
+      - 43210:43210/udp
+    container_name: bombsquad
+    volumes:
+      - /etc/machine-id:/etc/machine-id:ro
+      # - ./config.toml:/app/bombsquad-server/config.yaml
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 1g
+    image: crazyuploader/bombsquad
