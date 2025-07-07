@@ -6,20 +6,32 @@
 # Base Image: fedora:latest
 FROM fedora:latest
 
+# Get architecture
+ARG TARGETARCH
+ENV TARGETARCH=${TARGETARCH}
+
 # BombSquad Version to download
 ARG BOMBSQUAD_VERSION="1.7.43"
 
-# Update Packages list
-RUN dnf update -y
-
-# Install Packages
-RUN dnf install -y python3
+# Add required packages
+RUN dnf update -y && dnf install -y python3 curl && dnf clean all
 
 # Set Working Directory
 WORKDIR /app
 
 # Download BombSquad Server
-RUN curl -Lo bombsquad.tar.gz https://files.ballistica.net/bombsquad/builds/old/BombSquad_Server_Linux_x86_64_${BOMBSQUAD_VERSION}.tar.gz && \
+RUN case "${TARGETARCH}" in \
+        "amd64" | "x86_64") \
+            ARCH="x86_64"; \
+            ;; \
+        "arm64" | "aarch64") \
+            ARCH="Arm64"; \
+            ;; \
+        *) \
+            echo "Unsupported architecture: ${TARGETARCH}"; exit 1; \
+            ;; \
+    esac && \
+    curl -Lo bombsquad.tar.gz https://files.ballistica.net/bombsquad/builds/old/BombSquad_Server_Linux_${ARCH}_${BOMBSQUAD_VERSION}.tar.gz && \
     tar -xvf bombsquad.tar.gz && \
     mv BombSquad_Server*/ bombsquad-server && \
     rm -f bombsquad.tar.gz && \
