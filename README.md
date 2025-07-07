@@ -2,7 +2,7 @@
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/crazyuploader/bombsquad?style=flat-square)](https://hub.docker.com/r/crazyuploader/bombsquad)
 [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/crazyuploader/bombsquad/latest?style=flat-square)](https://hub.docker.com/r/crazyuploader/bombsquad/tags)
-[![Build Status](https://crazyuploader.semaphoreci.com/badges/bombsquad-docker/branches/master.svg)](https://crazyuploader.semaphoreci.com/projects/bombsquad-docker)
+[![Build Status](https://crazyuploader.semaphoreci.com/badges/bombsquad-docker/branches/main.svg)](https://crazyuploader.semaphoreci.com/projects/bombsquad-docker)
 
 ### Huge thanks to [Alibo](https://github.com/alibo/bombsquad-docker)
 
